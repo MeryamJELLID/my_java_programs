@@ -1,0 +1,30 @@
+class AbstractFinal {
+    public static void main(String[] args) {
+        // Il n'est pas possible d'utiliser new avec une classe abstraite:
+        // A x = new A();                // Faux
+        B y = new B();                   // OK
+        C z = new C();                   // OK
+        y.b = 2;                         // OK
+        // Il n'est pas possible de modifier une variable finale:
+        // z.c = 3;                      // Faux
+    }
+}
+abstract class A {
+    int a;
+}
+class B extends A {   int b;
+}
+class C extends A {
+    final double c = 1;
+}
+abstract class D extends A {
+    double d;
+    int operation(int a) {
+        return (a * 2);
+    }
+    // Une méthode abstraite ne peut pas avoir d'instructions ou
+    // d'accolades, seulement un point-virgule:
+    abstract int calcul(int b);
+    // { }                             // Faux    
+    abstract int machin();
+}
