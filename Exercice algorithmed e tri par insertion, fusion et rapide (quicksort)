@@ -1,0 +1,104 @@
+abstract class Tri {
+
+    /**
+     * Stocke le nombre de comparaisons d'ordre sur les éléments du tableau
+     */
+    protected int nbrTests;
+
+    /**
+     * Stocke  le nombre de fois que l'algorithme utilise son opération élémentaire
+     * ex: pour Quicksort l'opération élémentaire est la permutation (ou 'swap'
+     * en anglais) de deux éléments du tableau
+     */
+    protected int nbrOps;
+
+    /**
+     * Ne sert qu'à l'affichage.
+     * Ce tableau stocke les valeurs des éléments du tableau avant qu'ils ne soient triés.
+     */
+    protected int[] tableauEntree;
+
+    /**
+     * Le tableau sur lequel l'algorithme de tri travaille
+     */
+    protected int[] tableauTrie;
+
+
+    /**
+     * Champs d'information sur le tri utilisé.
+     * Il peuvent être redéfinis dans les sous classes
+     * Ex: nomTri = "quickSort"et nomOp = "swap"; dans le constructeur
+     * de QuickSort
+     */
+    protected String nomTri = "tri quelconque";
+    protected String nomOp = "operation quelconque";
+
+    public void initialiser(int[] unTableau) {
+        nbrTests = 0;
+        nbrOps = 0;
+        tableauEntree = new int[unTableau.length];
+        tableauTrie = new int[unTableau.length];
+        for (int i = 0; i < unTableau.length; i++) {
+            tableauEntree[i] = unTableau[i];
+            tableauTrie[i] = unTableau[i];
+        }
+    }
+
+    /**
+     * La méthode de tri propre à chaque sous-classe
+     * sera définie dans la sous-classe.
+     */
+    public int trier() {
+        nbrTests = 0;
+        nbrOps = 0;
+
+        algorithmeTri(0, tableauTrie.length - 1);
+
+        return (nbrTests + nbrOps);
+    }
+
+    /**
+     * algorithmeTri sera défini dans les sous classes
+     */
+    abstract void algorithmeTri(int indiceMin, int indiceMax);
+
+    /**
+     * Ici au lieu de définir une méthode affiche, on redéfinit la méthode
+     * toString qui est appellée automatiquement quand on fait un print de
+     * l'objet.
+     * ex: System.out.println(new QuickSort(new double[] {1 2}))
+     * va afficher le nombre d'opérations effectuées par QuickSort
+     * pour trier le tableau {1, 2}
+     */
+    public String toString() {
+        String marker = " *** ";
+        String size = "" + tableauEntree.length;
+        String input = "";
+        for (int i = 0; i < tableauEntree.length; i++) {
+            input = input + tableauEntree[i] + " ";
+        }
+
+        // ? est un opérateur ternaire permettant de
+        // faire la même chose qu'un if-then-else:
+        // (cond) ? siOui : siNon
+        String stats = nbrTests + " test d'ordre " + ((nbrTests > 1) ? "s" : "") + " and " +
+                nbrOps + " " + nomOp + ((nbrOps > 1) ? "s" : "");
+
+        return marker + nomTri + ": " + input + "\n" + marker +
+                "     ->    " + getSortedString(0, tableauTrie.length - 1) + "\n" +
+                marker + "taille du tableau d'entrée: " + size + "\n" +
+                marker + "a requis " + stats;
+    }
+
+    public String getSortedString(int inf, int sup) {
+        String output = "";
+        inf = ((inf < 0) ? 0 : inf);
+        sup = ((sup >= tableauTrie.length) ? tableauTrie.length - 1 : sup);
+        if (inf <= sup) {
+            for (int i = inf; i <= sup; i++) {
+                output = output + tableauTrie[i] + " ";
+            }
+        }
+        return output;
+    }
+}
