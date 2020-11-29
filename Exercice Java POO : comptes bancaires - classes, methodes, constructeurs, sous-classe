@@ -1,0 +1,29 @@
+class LaDate {
+int jour ;
+int mois ;
+int annee ;
+// ===================================================
+// l ’ année en c o u r s . . .
+static int CETTE_ANNE = 2005 ;
+public LaDate ( int j , int m, int a ) {
+this.jour = j ;
+this.mois = m;
+this.annee = a ;
+}
+public void ecrire () {
+Terminal.ecrire String( jour +" / "+mois+" / "+annee ) ;
+}
+}
+class LaPersonne {
+LaDate naissance ;
+String nom;
+public LaPersonne ( String name , LaDatenaiss ) {
+this.nom = name ;
+this.naissance = naiss ;
+}
+public void ecrire() {
+Terminal.ecrire String ( nom+" ( " ) ;
+naissance.ecrire() ;
+Terminal.ecrire String ( " ) " ) ;
+}
+}
