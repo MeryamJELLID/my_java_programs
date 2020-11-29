@@ -1,0 +1,33 @@
+class Exo12_3{
+int x , y ;
+String nom;
+void afficher ( ) {
+Terminal . ecrireString ( nom + " " + x + " " + y ) ;
+}
+void ajouter ( Exo12_3 obj ) {
+x = x + obj . x ;
+y = y + obj . y ;
+nom = nom + obj . nom;
+}
+Exo12_3 nouveau ( int n ) {
+Exo12_3 r e s = new Exo12_3 ( ) ;
+res . x = n ;
+res . y = n * 2 ;
+res . nom = "Auto_ "+n ;
+return res ;
+}
+boolean plusGrand ( Exo12_3 obj ) {
+if ( obj . x == x ) {
+return y> obj . y ;
+} else {
+return x> obj . x ;
+}
+}
+boolean compare ( Exo12_3 obj1 , Exo12_3 obj2 ) {
+i f ( obj1 . x == obj2 . x ) {
+return obj1 . y>obj2 . y ;
+} else {
+return obj1 . x>obj2 . x ;
+}
+}
+}
