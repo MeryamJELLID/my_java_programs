@@ -1,0 +1,123 @@
+// Ce programme calcule la surface d'un terrain composé d'un nombre arbitraire
+// de rectangles et de cercles.
+class Surfaces {
+    public static void main (String[] args) {
+        // Construction d'un terrain:
+        Terrain t = new Terrain();
+
+        t.ajouterForme(new Rectangle(100, 100));
+        t.ajouterForme(new Cercle(50));
+
+        t.afficherSurfaceTotale();
+    }
+}
+
+class Terrain {
+
+    // Tableau contenant les formes de ce terrain
+    private Forme[] liste;
+    // Cette variable indique combien il y a d'éléments dans le tableau
+    private int nbFormes = 0;
+
+    public Terrain () {
+        list = new Forme[10];
+    }
+
+    /**
+     * Ajoute une nouvelle Forme à la liste.
+     * @return true si la Forme a pu être ajoutée, false si le terrain est plein
+     */
+    public boolean ajouterForme(Forme forme) {
+        if (nbFormes < liste.length) {
+            liste[nbFormes] = forme;
+            nbFormes++;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Calcule la surface totale de toutes les formes
+     * @return La surface totale
+     */
+    private double calculerSurfaceTotale () {
+        double somme = 0.0;
+        for (int i = 0; i < nbFormes; i++) {
+            somme += liste[i].calculerSurface();
+        }
+        return somme;
+    }
+
+    public void afficherSurfaceTotale () {
+        double surfaceTotale = calculerSurfaceTotale();
+        System.out.println("La surface totale est " + surfaceTotale);
+    }
+}
+
+/**
+ * Cette classe est la super-classe commune de toutes les formes géométriques.
+ * Pour chaque forme (c'est-à-dire pour chaque sous-classe potentielle), on aimerait
+ * pouvoir calculer la surface de celle-ci. Comme ce concept est abstrait dans le cas
+ * d'une forme géométrique générale, on déclare la classe comme étant abstraite.
+ */
+abstract class Forme {
+    /**
+     * Cette méthode calcule la surface d'une forme géométrique. La responsabilité
+     * de l'implémentation est laissée aux sous-classes.
+     * @return  La surface de la forme
+     */
+    public abstract double calculerSurface();
+}
+
+class Rectangle extends Forme {
+
+    private double largeur;
+    private double hauteur;
+
+    public Rectangle (double largeur, double hauteur) {
+        this.largeur = largeur;
+        this.hauteur = hauteur;
+    }
+
+    public void setLargeur (double largeur) {
+        this.largeur = largeur;
+    }
+
+    public double getLargeur () {
+        return largeur;
+    }
+
+    public void setHauteur (double hauteur) {
+        this.hauteur = hauteur;
+    }
+
+    public double getHauteur () {
+        return hauteur;
+    }
+
+    public double calculerSurface () {
+        return (largeur * hauteur);
+    }
+}
+
+class Cercle extends Forme {
+
+    private double rayon;
+
+    public Cercle (double rayon) {
+        this.rayon = rayon;
+    }
+
+    public void setRayon (double rayon) {
+        this.rayon = rayon;
+    }
+
+    public double getRayon () {
+        return rayon;
+    }
+
+    public double calculerSurface () {
+        return (Math.PI * rayon * rayon);
+    }
+}
