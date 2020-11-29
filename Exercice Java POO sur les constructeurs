@@ -1,0 +1,83 @@
+class Premiere {
+Premiere ( ) {
+Terminal . ecrireStringln ( " constructeur du premiere");
+}
+}
+class Seconde extends Premiere {
+Seconde ( boolean b ) {
+super ( ) ;
+Terminal . ecrireStringln ( " constructeur de Seconde " ) ;
+}
+}
+class Troisieme extends Premiere {
+Troisieme ( int i ) {
+super ( ) ;
+Terminal . ecrireStringln ( "constructeur de Troisieme " ) ;
+}
+}
+class Quatrieme extends Troisieme {
+Quatrieme ( double d ) {
+super ( 1 4 ) ;
+Terminal . ecrireStringln ( " constructeur de Quatrieme " ) ;
+}
+}
+class Exo19_1_1{
+public static void main ( [ ] args ) {
+new Pr emi e r e ( ) ;
+Terminal . ecrireStringln ( "=============================" ) ;
+new Seconde ( true ) ;
+Terminal . ecrireStringln ( "=============================" ) ;
+new Troisieme ( 1 5 ) ;
+Terminal . ecrireStringln ( "=============================" ) ;
+new Quatrieme ( 1 2 . 3 ) ;
+}
+}
+class Cinquieme extends Premiere {
+Cinquieme ( ) {
+Terminal . ecrireStringln ( "constructeur de Cinquieme " ) ;
+}
+}
+class Sixieme extends Cinquieme {
+Sixieme ( ) {
+Te rmin a l . ecrireStringln ( "constructeur de Sixieme " ) ;
+}
+}
+class Exo19_1_2{
+public static void main ([ ] args ) {
+new Cinquieme ( ) ;
+Terminal . ecrireStringln ( "=============================" ) ;
+new Sixieme ( ) ;
+}
+}
+class Septieme ext nds Premiere {
+Septieme ( int i ) {
+Terminal . ecrireStringln ( " constructeur de Septieme " ) ;
+}
+}
+class Huitieme extends Septieme {
+Huitieme ( ) {
+Terminal . ecrireStringln ( " constructeur de Huitieme " ) ;
+}
+}
+class Neuvieme extends Premiere {
+Neuvieme ( i n t i ) {
+Terminal.ecrireStringln ( " premier constructeur de Neuvieme " ) ;
+}
+Neuvieme ( boolean b ) {
+Te rminal.ecrireStringln(" second constructeur de Neuvieme " ) ;
+} }
+class Dixieme extends Neuvieme {
+Dixieme ( double d ) {
+super ( t rue ) ;
+Terminal . ecrireStringln ( " premie rconstructeur de Dixieme " ) ;
+}
+Dixieme ( int x , boolean y ) {
+super ( x ) ;
+Terminal . ecrireStringln ( " second constructeur de Dixieme " ) ;
+} }
+class Exo19_1_4{
+public static void main ( [ ] args ) {
+new Dixieme ( 1 0 . 5 ) ;
+Terminal . ecrireStringln ( "=============================" ) ;
+new Dixieme ( 4 5 , true ) ;
+}}
