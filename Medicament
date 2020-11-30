@@ -24,3 +24,42 @@ public void augumnterStock(int quantite){
  return nom;
  }
  }
+ static Medicament LireMedicament (Medicament[] medicaments) {
+    String nom;
+    boolean trouve = false ;
+    Medicament n = null;
+    System.out.println("nom du medicament?:");
+    do { 
+        nom = scanner.nextLine();
+        for (int i = 0; (!trouve &&i< medicaments.lenght);i++){
+            if ((medicaments[i].getNom()).equals(nom)) {
+                trouve = true;
+                m = medicaments[i] ;
+            }
+        }
+        if (!trouve) {
+            System.out.println("Medicament inconnu , Veuillez recommencer");
+        }
+        
+    } while (!trouve);
+    return n;
+}
+static double lirePaiement() {
+    double paiement;
+    System.out.println("quel est le montant du paiement?");
+    paiement = scanner.nextDouble();
+    scanner.nextLine();
+    return paiement;
+}
+static int lireQuantite() {
+    int quantite;
+    System.out.println("quelle est la quantite achetée?");
+    quantite = scanner.nextInt();
+    scanner.nextLine();
+    return quantite;
+}
+static void quitter() {
+    System.out.println("programme terminé!");
+}
+}
+
